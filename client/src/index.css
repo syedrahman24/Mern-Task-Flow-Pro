@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    @apply border-dark-800;
+  }
+  
+  body {
+    @apply bg-black text-gray-100 font-sans antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    background: linear-gradient(135deg, #000000 0%, #0f172a 50%, #1e293b 100%);
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-primary-500/20 text-primary-100;
+  }
+}
+
+@layer components {
+  /* Premium Button Styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl font-medium transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-dark-950 disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .btn-primary {
+    @apply bg-gradient-to-r from-primary-600 to-primary-700 text-white shadow-soft hover:shadow-glow hover:scale-105 active:scale-95 focus:ring-primary-500;
+    background: linear-gradient(135deg, #9333ea 0%, #7c3aed 100%);
+  }
+
+  .btn-primary:hover {
+    background: linear-gradient(135deg, #a855f7 0%, #9333ea 100%);
+    box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
+  }
+
+  .btn-secondary {
+    @apply bg-dark-800 text-gray-200 border border-dark-700 shadow-soft hover:bg-dark-700 hover:border-primary-500/50 hover:shadow-glow focus:ring-primary-500;
+  }
+
+  .btn-ghost {
+    @apply text-gray-400 hover:text-white hover:bg-dark-800 focus:ring-primary-500;
+  }
+
+  .btn-danger {
+    @apply bg-gradient-to-r from-danger-600 to-danger-700 text-white shadow-soft hover:shadow-glow hover:scale-105 active:scale-95 focus:ring-danger-500;
+  }
+
+  .btn-success {
+    @apply bg-gradient-to-r from-success-600 to-success-700 text-white shadow-soft hover:shadow-glow hover:scale-105 active:scale-95 focus:ring-success-500;
+  }
+
+  /* Premium Input Styles */
+  .input {
+    @apply w-full px-4 py-3 bg-dark-800 border border-dark-700 rounded-xl text-gray-100 placeholder-gray-500 transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:border-primary-500/50 focus:shadow-glow disabled:opacity-50 disabled:cursor-not-allowed;
+  }
+
+  .input-group {
+    @apply relative;
+  }
+
+  .input-icon {
+    @apply absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-500;
+  }
+
+  .input-with-icon {
+    @apply pl-10;
+  }
+
+  /* Premium Card Styles */
+  .card {
+    @apply bg-dark-900/50 backdrop-blur-sm border border-dark-800/50 rounded-2xl shadow-soft transition-all duration-300 hover:shadow-card-hover hover:border-dark-700/50;
+  }
+
+  .card-elevated {
+    @apply bg-dark-900/60 backdrop-blur-md border border-dark-700/30 rounded-2xl shadow-elevated transition-all duration-300 hover:shadow-glow-lg hover:scale-[1.02];
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(30, 41, 59, 0.6) 100%);
+  }
+
+  .card-elevated:hover {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.8) 0%, rgba(30, 41, 59, 0.8) 100%);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+  }
+
+  .card-glass {
+    @apply bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl shadow-soft;
+  }
+
+  /* Premium Task Card */
+  .task-card {
+    @apply bg-dark-900/40 backdrop-blur-md border border-dark-800/30 rounded-2xl p-6 shadow-soft transition-all duration-500 cursor-pointer relative overflow-hidden;
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.4) 0%, rgba(30, 41, 59, 0.4) 100%);
+  }
+
+  .task-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(168, 85, 247, 0.1), transparent);
+    transition: left 0.5s ease-in-out;
+  }
+
+  .task-card:hover::before {
+    left: 100%;
+  }
+
+  .task-card:hover {
+    @apply border-primary-500/50 shadow-glow-lg scale-[1.02];
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6) 0%, rgba(30, 41, 59, 0.6) 100%);
+    box-shadow: 0 0 30px rgba(168, 85, 247, 0.2), 0 10px 25px -3px rgba(0, 0, 0, 0.3);
+  }
+
+  .task-card:hover .task-actions {
+    @apply opacity-100 translate-y-0;
+  }
+
+  .task-actions {
+    @apply absolute top-4 right-4 opacity-0 translate-y-2 transition-all duration-300 flex gap-2 z-20;
+  }
+
+  /* Priority Badges */
+  .priority-badge {
+    @apply inline-flex items-center px-3 py-1 rounded-full text-xs font-medium transition-all duration-200;
+  }
+
+  .priority-low {
+    @apply bg-success-500/20 text-success-400 border border-success-500/30;
+  }
+
+  .priority-medium {
+    @apply bg-warning-500/20 text-warning-400 border border-warning-500/30;
+  }
+
+  .priority-high {
+    @apply bg-danger-500/20 text-danger-400 border border-danger-500/30;
+  }
+
+  /* Premium Modal */
+  .modal-overlay {
+    @apply fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4;
+  }
+
+  .modal-content {
+    @apply bg-dark-900/95 backdrop-blur-md border border-dark-700/50 rounded-3xl shadow-elevated max-w-md w-full max-h-[90vh] overflow-y-auto;
+  }
+
+  /* Premium Navigation */
+  .nav-link {
+    @apply px-4 py-2 rounded-xl text-gray-400 hover:text-white hover:bg-dark-800 transition-all duration-200;
+  }
+
+  .nav-link-active {
+    @apply bg-primary-500/20 text-primary-400 border border-primary-500/30;
+  }
+
+  /* Premium Loading */
+  .loading-spinner {
+    @apply animate-spin rounded-full border-2 border-dark-700 border-t-primary-500;
+  }
+
+  /* Premium Scrollbar */
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: theme('colors.dark.700') theme('colors.dark.900');
+  }
+
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-track {
+    @apply bg-dark-900 rounded-full;
+  }
+
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    @apply bg-dark-700 rounded-full hover:bg-dark-600 transition-colors;
+  }
+
+  /* Premium Animations */
+  .animate-float {
+    animation: float 3s ease-in-out infinite;
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  /* Premium Gradients */
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary-400 to-primary-600 bg-clip-text text-transparent;
+  }
+
+  .gradient-border {
+    @apply bg-gradient-to-r from-primary-500 to-primary-600 p-[1px] rounded-2xl;
+  }
+
+  .gradient-border > * {
+    @apply bg-dark-900 rounded-2xl;
+  }
+
+  /* Premium Layout */
+  .glass-panel {
+    @apply bg-dark-900/30 backdrop-blur-md border border-dark-800/30 rounded-2xl;
+  }
+
+  .glass-button {
+    @apply bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl text-white hover:bg-white/20 transition-all duration-200;
+  }
+
+  /* Premium Status Indicators */
+  .status-indicator {
+    @apply w-2 h-2 rounded-full;
+  }
+
+  .status-online {
+    @apply bg-success-500 shadow-glow;
+  }
+
+  .status-offline {
+    @apply bg-gray-500;
+  }
+
+  /* Premium Form Elements */
+  .form-group {
+    @apply space-y-2;
+  }
+
+  .form-label {
+    @apply block text-sm font-medium text-gray-300 mb-2;
+  }
+
+  .form-error {
+    @apply text-danger-400 text-sm mt-1;
+  }
+
+  .form-success {
+    @apply text-success-400 text-sm mt-1;
+  }
+
+  /* Premium Toggle */
+  .toggle {
+    @apply relative inline-flex h-6 w-11 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2 focus:ring-offset-dark-950;
+  }
+
+  .toggle-enabled {
+    @apply bg-primary-600;
+  }
+
+  .toggle-disabled {
+    @apply bg-dark-700;
+  }
+
+  .toggle-thumb {
+    @apply inline-block h-4 w-4 transform rounded-full bg-white transition-transform;
+  }
+
+  .toggle-thumb-enabled {
+    @apply translate-x-6;
+  }
+
+  .toggle-thumb-disabled {
+    @apply translate-x-1;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .animate-delay-100 {
+    animation-delay: 100ms;
+  }
+
+  .animate-delay-200 {
+    animation-delay: 200ms;
+  }
+
+  .animate-delay-300 {
+    animation-delay: 300ms;
+  }
+
+  .animate-delay-500 {
+    animation-delay: 500ms;
+  }
+} 
